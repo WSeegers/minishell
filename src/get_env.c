@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/18 13:05:19 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/22 18:03:47 by wseegers         ###   ########.fr       */
+/*   Created: 2018/08/22 15:26:27 by wseegers          #+#    #+#             */
+/*   Updated: 2018/08/22 15:53:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 
-void	print_basic_prompt(void)
+char		*get_env(char *name)
 {
-	f_printf("$>");
-}
+	t_evar *evar;
 
-int		get_command(t_argv *argv)
-{
-	char	*line;
-	int		argc;
-
-	f_next_line(&line, STDIN);
-	argc = parse_argv(line, argv);
-	free(line);
-	return (argc);
-}
-
-int		main(void)
-{
-	t_argv	argv;
-
-	init_env();
-
-	print_basic_prompt();
-	get_command(&argv);
-	exec_command(&argv);
+	evar = (t_evar*)s_list_func_find(g_environ, is_name, name);
+	if (!evar)
+		return (NULL);
+	return (evar->value);
 }
