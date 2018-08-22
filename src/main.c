@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 13:05:19 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/22 18:03:47 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/22 23:53:12 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ int		main(void)
 	t_argv	argv;
 
 	init_env();
-
-	print_basic_prompt();
-	get_command(&argv);
-	exec_command(&argv);
+	while (1)
+	{
+		print_basic_prompt();
+		get_command(&argv);  //need to trim while space
+		process_command(argv);
+		//need to free argv
+	}
 }
