@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built_in.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 06:57:00 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 11:46:46 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 21:39:00 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include <stdbool.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 # include "f_string.h"
 # include "argv.h"
 # include "s_list.h"
+# include "env.h"
 
 typedef struct	s_built_in
 {
@@ -31,6 +33,11 @@ typedef struct	s_built_in
 t_list		*get_builtins(void);
 bool		exec_built_in(t_argv argv);
 
+int			validate_path(char *path);
+int			print_err(int err_code);
+
 void		bi_exit(t_argv argv);
+void		bi_cd(t_argv argv);
+void		bi_echo(t_argv argv);
 
 #endif

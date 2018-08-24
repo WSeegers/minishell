@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 13:05:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 11:39:58 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 20:53:19 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <dirent.h>
+# include <sys/wait.h>
+# include <sys/types.h>
 # include "f_print.h"
 # include "f_io.h"
 
@@ -28,7 +30,10 @@ void	process_command(t_argv argv);
 int		validate_path(char *path);
 char	*validate_env_path(t_argv argv);
 
-# define E_PDENY	(-2)
-# define E_NOPATH	(-3)
+# define E_NOERR	(0)
+# define E_PDENY	(1)
+# define E_NOPATH	(2)
+
+int		print_err(int err_code);
 
 #endif

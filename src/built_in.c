@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   built_in.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 09:14:20 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 11:46:49 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 21:11:54 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
+
+//needs a static free function
 
 static t_built_in *new_built_in(char *command, void (*built_in_func)(t_argv argv))
 {
@@ -26,6 +28,8 @@ static void		init_built_ins(t_list **built_ins)
 {
 	*built_ins = s_list_create(NULL); // add destroy funtion
 	s_list_append(*built_ins, CREATE_BI("exit", bi_exit));
+	s_list_append(*built_ins, CREATE_BI("cd", bi_cd));
+	s_list_append(*built_ins, CREATE_BI("echo", bi_echo));
 }
 
 t_list		*get_builtins(void)
