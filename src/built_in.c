@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 09:14:20 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 21:11:54 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 22:50:43 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void		init_built_ins(t_list **built_ins)
 	s_list_append(*built_ins, CREATE_BI("exit", bi_exit));
 	s_list_append(*built_ins, CREATE_BI("cd", bi_cd));
 	s_list_append(*built_ins, CREATE_BI("echo", bi_echo));
+	s_list_append(*built_ins, CREATE_BI("setenv", bi_setenv));
+	s_list_append(*built_ins, CREATE_BI("unsetenv", bi_unsetenv));
 }
 
 t_list		*get_builtins(void)

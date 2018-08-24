@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 12:03:37 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/22 17:57:20 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 22:13:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ struct	s_evar
 typedef struct s_evar	t_evar;
 
 bool	init_env(void);
-
 
 char	*get_env(char *name);
 bool	set_env(const char *name, const char *value, bool overwrite);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 18:08:22 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 11:39:15 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 23:02:11 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,10 @@ static void	exec(char *path, t_argv argv)
 	pid_t	child_pid;
 	int		ret;
 
-	//debug
-	extern char **environ;
-
 	child_pid = fork();
 	ret = -42;
 	if (child_pid)
-	{
 		wait(&ret);
-	}
 	else
 	{
 		execve(path, argv, env_char()); //env char is leaking

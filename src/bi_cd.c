@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 19:44:11 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 21:39:23 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 22:55:39 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,17 @@ void	bi_cd(t_argv argv)
 {
 	char *cwd;
 	char *new_wd;
+	char *home;
+
 
 	if (!argv[1])
-		update_pwd(get_env("HOME"));
+	{
+		if ((home = get_env("HOME")))
+			update_pwd(home);
+		else
+			f_fprintf(STDERR,
+				"HOME is not set: set home with \"setenv HOME [path]\"\n");
+	}
 	else
 	{
 		cwd = getcwd(NULL, 128);
