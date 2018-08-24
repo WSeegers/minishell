@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   exec_built_in.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 15:26:27 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 09:30:14 by wseegers         ###   ########.fr       */
+/*   Created: 2018/08/24 06:55:54 by wseegers          #+#    #+#             */
+/*   Updated: 2018/08/24 11:46:24 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+# include "built_in.h"
 
-char		*get_env(char *name)
+static bool	is_built_in(void *built_in, void *command)
 {
-	t_evar *evar;
+	t_built_in	*bi;
+	char		*com;
 
-	evar = (t_evar*)s_list_func_find(g_environ, is_name, name);
-	if (!evar)
-		return (NULL);
-	return (evar->value);
+	bi = (t_built_in*)built_in;
+	com = (char*)command;
+	return (!f_strcmp(bi->command, com));
+}
+
+bool		exec_built_in(t_argv argv)
+{
+	t_built_in	*built_in;
+
+	built_in = s_list_func_find(get_builtins(), is_built_in, argv[0]);
+	if (built_in)
+		built_in->func(argv);
+	return (built_in);
 }

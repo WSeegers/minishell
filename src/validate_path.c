@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   validate_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 15:26:27 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 09:30:14 by wseegers         ###   ########.fr       */
+/*   Created: 2018/08/24 06:27:50 by wseegers          #+#    #+#             */
+/*   Updated: 2018/08/24 06:28:25 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "minishell.h"
 
-char		*get_env(char *name)
+int		validate_path(char *path)
 {
-	t_evar *evar;
+	char	*slash;
+	int		i;
 
-	evar = (t_evar*)s_list_func_find(g_environ, is_name, name);
-	if (!evar)
-		return (NULL);
-	return (evar->value);
+	path = f_strdup(path);
+	if (!(access(path, F_OK)) && !access(path, X_OK))
+	{
+		free(path);
+		return (0);
+	}
+	i = 1;
+	slash = NULL;
+	while (i || (slash = f_strrchr(path, '/')))
+	{
+		if (slash)
+			*slash = '\0';
+		else if (!i)
+		{
+			free(path);
+			return (E_PDENY);
+		}
+		i = 0;
+	}
+	free(path);
+	return (E_NOPATH);
 }

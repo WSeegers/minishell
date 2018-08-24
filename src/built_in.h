@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   built_in.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 15:26:27 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 09:30:14 by wseegers         ###   ########.fr       */
+/*   Created: 2018/08/24 06:57:00 by wseegers          #+#    #+#             */
+/*   Updated: 2018/08/24 11:46:46 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#ifndef BUILT_IN_H
+# define BUILT_IN_H
 
-char		*get_env(char *name)
+# include <stdbool.h>
+# include <stdlib.h>
+
+# include "f_string.h"
+# include "argv.h"
+# include "s_list.h"
+
+typedef struct	s_built_in
 {
-	t_evar *evar;
+	char	*command;
+	void	(*func)(t_argv);
+}				t_built_in;
 
-	evar = (t_evar*)s_list_func_find(g_environ, is_name, name);
-	if (!evar)
-		return (NULL);
-	return (evar->value);
-}
+# define CREATE_BI(command, func)	(new_built_in(command, func))
+
+t_list		*get_builtins(void);
+bool		exec_built_in(t_argv argv);
+
+void		bi_exit(t_argv argv);
+
+#endif

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   bi_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 15:26:27 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 09:30:14 by wseegers         ###   ########.fr       */
+/*   Created: 2018/08/24 11:44:41 by wseegers          #+#    #+#             */
+/*   Updated: 2018/08/24 11:44:58 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "built_in.h"
 
-char		*get_env(char *name)
+void bi_exit(t_argv argv)
 {
-	t_evar *evar;
-
-	evar = (t_evar*)s_list_func_find(g_environ, is_name, name);
-	if (!evar)
-		return (NULL);
-	return (evar->value);
+	(void)argv;
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 13:05:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/22 23:37:06 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/08/24 11:39:58 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
 
 # include "argv.h"
 # include "env.h"
+# include "built_in.h"
 
-void	exec(char *path, t_argv argv);
 void	process_command(t_argv argv);
+int		validate_path(char *path);
+char	*validate_env_path(t_argv argv);
 
 # define E_PDENY	(-2)
 # define E_NOPATH	(-3)
