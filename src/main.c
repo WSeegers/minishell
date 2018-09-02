@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 13:05:19 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 09:03:27 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 10:26:12 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int		get_command(t_argv *argv)
 	char	*line;
 	int		argc;
 
+	argc = 0;
 	f_next_line(&line, STDIN);
-	argc = parse_argv(line, argv);
+	if (*line)
+		argc = parse_argv(line, argv);
 	free(line);
 	return (argc);
 }
@@ -31,16 +33,14 @@ int		get_command(t_argv *argv)
 int		main(void)
 {
 	t_argv	argv;
-	//char	*pwd;
 
 	init_env();
 	while (1)
 	{
-		//set_env("PWD", (pwd = getcwd(NULL, 0)), true);
-		//f_printf("%s ", pwd);
 		print_basic_prompt();
-		get_command(&argv);  //need to trim while space
-		process_command(argv);
-		//need to free argv
+		if (!get_command(&argv))
+			continue ;
+		process_command(argv); //need to free argv
+		f_strarrdel(argv);
 	}
 }

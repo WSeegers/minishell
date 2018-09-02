@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 16:26:46 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/22 08:56:54 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 09:49:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static char	*duparg(const char *arg)
 	char *pret;
 	char c;
 
+	while (f_isspace(*arg))
+		arg++;
 	ret = f_strnew(f_strlen(arg));
 	pret = ret;
-	if ((*arg == '\"' || *arg == '\'') && (c = *arg))
-		arg++;
-	else
-		c = '\0';
+	c = ((*arg == '\"' || *arg == '\'')) ? *arg : '\0';
+	arg += (c) ? 1 : 0;
 	while (*arg)
 	{
 		if (*arg != c)
@@ -75,8 +75,12 @@ static int	split_line(char **pargs, const char *line)
 					return (-1);
 				}
 		}
-		else if (c == ' ' && ++count)
+		else if (f_isspace(c) && ++count)
+		{
 			args[i] = '\0';
+			while (f_isspace(args[++i]))
+				;
+		}
 	*pargs = args;
 	return (count);
 }

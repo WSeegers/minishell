@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 19:44:11 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 22:55:39 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 09:17:20 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	bi_cd(t_argv argv)
 	char *cwd;
 	char *new_wd;
 	char *home;
-
 
 	if (!argv[1])
 	{
