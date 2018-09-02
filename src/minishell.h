@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 13:05:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 20:53:19 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 15:54:29 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "env.h"
 # include "built_in.h"
 
+void	expand_var(t_argv argv);
 void	process_command(t_argv argv);
 int		validate_path(char *path);
 char	*validate_env_path(t_argv argv);

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 16:26:46 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 09:49:34 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 19:23:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static char	*duparg(const char *arg)
 	char *pret;
 	char c;
 
-	while (f_isspace(*arg))
-		arg++;
 	ret = f_strnew(f_strlen(arg));
 	pret = ret;
 	c = ((*arg == '\"' || *arg == '\'')) ? *arg : '\0';
@@ -76,11 +74,7 @@ static int	split_line(char **pargs, const char *line)
 				}
 		}
 		else if (f_isspace(c) && ++count)
-		{
 			args[i] = '\0';
-			while (f_isspace(args[++i]))
-				;
-		}
 	*pargs = args;
 	return (count);
 }

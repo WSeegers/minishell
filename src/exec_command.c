@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 18:08:22 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 23:02:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 21:13:00 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	exec(char *path, t_argv argv)
 		wait(&ret);
 	else
 	{
-		execve(path, argv, env_char()); //env char is leaking
+		execve(path, argv, env_char());
 		f_printf("exec error: %s\n", path);
 		exit(0);
 	}
@@ -43,7 +43,7 @@ void	process_command(t_argv argv)
 		if (!(err = validate_path(argv[0])))
 			exec(argv[0], argv);
 		else
-			f_printf("error\n"); // Print correct error message
+			f_printf("Command not found: %s\n", argv[0]);
 	}
 	else if (exec_built_in(argv))
 		;

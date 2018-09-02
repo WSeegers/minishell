@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 06:57:00 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 22:49:48 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 21:28:31 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			print_err(int err_code);
 void		bi_exit(t_argv argv);
 void		bi_cd(t_argv argv);
 void		bi_echo(t_argv argv);
+void		bi_env (t_argv argv);
 void		bi_setenv(t_argv argv);
 void		bi_unsetenv(t_argv argv);
 
