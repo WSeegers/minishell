@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 13:05:19 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 21:01:49 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 21:46:27 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		main(void)
 	t_argv	argv;
 
 	init_env();
+	builtins(init);
 	while (1)
 	{
 		print_basic_prompt();

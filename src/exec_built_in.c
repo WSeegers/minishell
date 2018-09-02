@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_built_in.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 06:55:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 11:46:24 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 21:45:36 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool		exec_built_in(t_argv argv)
 {
 	t_built_in	*built_in;
 
-	built_in = s_list_func_find(get_builtins(), is_built_in, argv[0]);
+	built_in = s_list_func_find(builtins(get), is_built_in, argv[0]);
 	if (built_in)
 		built_in->func(argv);
 	return (built_in);

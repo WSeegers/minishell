@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 06:57:00 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 21:28:31 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 21:46:39 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ typedef struct	s_built_in
 
 # define CREATE_BI(command, func)	(new_built_in(command, func))
 
-t_list		*get_builtins(void);
+enum	e_mode {get, init};
+
+t_list		*builtins(enum e_mode mode);
 bool		exec_built_in(t_argv argv);
 
 int			validate_path(char *path);

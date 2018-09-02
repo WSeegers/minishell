@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 09:14:20 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 21:30:07 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/02 21:47:06 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_built_in *new_built_in(char *command, void (*built_in_func)(t_argv argv
 
 static void		init_built_ins(t_list **built_ins)
 {
-	*built_ins = s_list_create(NULL); // add destroy funtion
+	*built_ins = s_list_create(NULL);
 	s_list_append(*built_ins, CREATE_BI("exit", bi_exit));
 	s_list_append(*built_ins, CREATE_BI("cd", bi_cd));
 	s_list_append(*built_ins, CREATE_BI("env", bi_env));
@@ -35,11 +35,11 @@ static void		init_built_ins(t_list **built_ins)
 	s_list_append(*built_ins, CREATE_BI("unsetenv", bi_unsetenv));
 }
 
-t_list		*get_builtins(void)
+t_list		*builtins(enum e_mode mode)
 {
 	static t_list *built_ins;
 
-	if (!built_ins)
+	if (mode == init)
 		init_built_ins(&built_ins);
 	return (built_ins);
 }
