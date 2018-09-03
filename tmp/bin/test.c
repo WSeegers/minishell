@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset_env.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 17:49:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/03 14:17:11 by wseegers         ###   ########.fr       */
+/*   Created: 2018/09/03 15:29:26 by wseegers          #+#    #+#             */
+/*   Updated: 2018/09/03 15:33:20 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include <unistd.h>
 
-bool	unset_env(char *name)
+int		main(void)
 {
-	t_evar	*evar;
-
-	if (!(evar = get_evar(name)))
-		return (false);
-	evar = s_list_pop(g_environ, s_list_find(g_environ, evar));
-	free(evar->name);
-	free(evar->value);
-	free(evar);
-	return (true);
+	write(1, "KO\n", 3);
 }

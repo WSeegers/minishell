@@ -3,32 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   bi_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 19:44:11 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 21:23:51 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/03 14:43:46 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-static void	update_cwd(char *new_path)
+static void	clean_path(char *new_path)
 {
-	char *cwd;
+	char *last_slash;
+	char *next_slash;
 
-	if (print_err(validate_path(new_path)))
-			;
-	else
+	last_slash = f_strchr(new_path + 1, '/');
+	if (last_slash)
+		while ((next_slash = f_strchr(last_slash + 1, '/')))
+			last_slash = next_slash;
+	if (last_slash && last_slash[1] == '.')
 	{
-		chdir(new_path);
-		cwd = getcwd(NULL, 128);
-		set_env("OLDPWD", get_env("PWD"), true);
-		set_env("PWD", cwd, true);
-		free(cwd);
+		*last_slash = '\0';
+		if (last_slash[2] == '.')
+		{
+			last_slash = f_strchr(new_path, '/');
+			while ((next_slash = f_strchr(last_slash + 1, '/')))
+				last_slash = next_slash;
+			*last_slash = '\0';
+		}
+	}
+	if (!*new_path)
+	{
+		*new_path = '/';
+		new_path[1] = '\0';
 	}
 }
 
-static void home(void)
+static void	update_cwd(char *new_path)
+{
+	if (print_err(validate_path(new_path)))
+		;
+	else
+	{
+		clean_path(new_path);
+		chdir(new_path);
+		set_env("OLDPWD", get_env("PWD"), true);
+		set_env("PWD", new_path, true);
+	}
+}
+
+static void	home(void)
 {
 	char *home;
 
@@ -37,12 +61,10 @@ static void home(void)
 	else
 		f_fprintf(STDERR,
 			"HOME is not set: set home with \"setenv HOME [path]\"\n");
-
 }
 
-void	bi_cd(t_argv argv)
+void		bi_cd(t_argv argv)
 {
-	char *cwd;
 	char *new_wd;
 
 	if (argv[1] && argv[2])
@@ -55,11 +77,9 @@ void	bi_cd(t_argv argv)
 		update_cwd(argv[1]);
 	else
 	{
-		cwd = getcwd(NULL, 128);
-		new_wd = f_strcjoin(cwd, argv[1], '/');
+		new_wd = f_strcjoin(get_env("PWD"), argv[1], '/');
 		update_cwd(new_wd);
 		free(new_wd);
-		free(cwd);
 	}
 	return ;
 }

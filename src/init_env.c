@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 15:37:32 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/22 17:45:40 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/03 14:50:30 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool		init_env(void)
 {
 	extern char	**environ;
 	char		*var;
+	char		cwd[2048];
 	int			i;
 
 	if (!(g_environ = s_list_create(destroy_evar)))
@@ -46,5 +47,8 @@ bool		init_env(void)
 	i = -1;
 	while ((var = environ[++i]))
 		parse_var(var);
+	while (!get_env("PWD"))
+		set_env("PWD", getcwd(cwd, 2048), true);
+	set_env("OLDPWD", cwd, true);
 	return (false);
 }
