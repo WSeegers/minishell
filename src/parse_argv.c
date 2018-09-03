@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 16:26:46 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 19:23:55 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/03 09:37:49 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	split_line(char **pargs, const char *line)
 	return (count);
 }
 
-int	parse_argv(const char *line, t_argv *pargv)
+int			parse_argv(const char *line, t_argv *pargv)
 {
 	char	*args;
 	int		count;
