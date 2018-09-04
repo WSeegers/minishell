@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built_in.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 06:57:00 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 21:46:39 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:26:29 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ typedef struct	s_built_in
 
 # define CREATE_BI(command, func)	(new_built_in(command, func))
 
-enum	e_mode {get, init};
+enum			e_mode {get, init};
 
-t_list		*builtins(enum e_mode mode);
-bool		exec_built_in(t_argv argv);
+t_list			*builtins(enum e_mode mode);
+bool			exec_built_in(t_argv argv);
 
-int			validate_path(char *path);
-int			print_err(int err_code);
+int				validate_path(char *path);
+int				print_err(int err_code);
 
-void		bi_exit(t_argv argv);
-void		bi_cd(t_argv argv);
-void		bi_echo(t_argv argv);
-void		bi_env (t_argv argv);
-void		bi_setenv(t_argv argv);
-void		bi_unsetenv(t_argv argv);
+void			bi_exit(t_argv argv);
+void			bi_cd(t_argv argv);
+void			bi_echo(t_argv argv);
+void			bi_env (t_argv argv);
+void			bi_setenv(t_argv argv);
+void			bi_unsetenv(t_argv argv);
 
 #endif

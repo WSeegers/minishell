@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   built_in.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 09:14:20 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 21:47:06 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:22:48 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-//needs a static free function
-
-static t_built_in *new_built_in(char *command, void (*built_in_func)(t_argv argv))
+static t_built_in	*new_built_in(char *command,
+	void (*built_in_func)(t_argv argv))
 {
 	t_built_in *bi;
 
@@ -24,7 +23,7 @@ static t_built_in *new_built_in(char *command, void (*built_in_func)(t_argv argv
 	return (bi);
 }
 
-static void		init_built_ins(t_list **built_ins)
+static void			init_built_ins(t_list **built_ins)
 {
 	*built_ins = s_list_create(NULL);
 	s_list_append(*built_ins, CREATE_BI("exit", bi_exit));
@@ -35,7 +34,7 @@ static void		init_built_ins(t_list **built_ins)
 	s_list_append(*built_ins, CREATE_BI("unsetenv", bi_unsetenv));
 }
 
-t_list		*builtins(enum e_mode mode)
+t_list				*builtins(enum e_mode mode)
 {
 	static t_list *built_ins;
 
@@ -43,4 +42,3 @@ t_list		*builtins(enum e_mode mode)
 		init_built_ins(&built_ins);
 	return (built_ins);
 }
-

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 15:02:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/03 15:03:13 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 08:46:14 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	handle_open_pair(char **pline)
 	free(next_line);
 }
 
-void	validate_line(char **pline)
+void		validate_line(char **pline)
 {
 	char	*line;
 	int		i;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bi_setenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 22:07:34 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 22:49:51 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:23:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-static void show_usage(void)
+static void	show_usage(void)
 {
 	f_printf("setenv [key] [value]\n");
 }

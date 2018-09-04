@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 13:05:19 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/03 15:27:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 08:45:14 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ int		main(void)
 		print_prompt();
 		if (!get_command(&argv))
 			continue ;
-		// for (int i = 0; argv[i]; i++)
-		// 	f_printf("%d: %s\n", i, argv[i]);
 		expand_var(argv);
 		process_command(argv);
 		f_strarrdel(argv);

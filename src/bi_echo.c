@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 21:06:01 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 21:47:12 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:31:09 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,19 @@ void	bi_echo(t_argv argv)
 	int		i;
 
 	i = 1;
-	if (argv[i][0] == '-')
-		skip_line = must_skip_newline(argv[i++]);
-	str = argv[i];
-	while (str)
+	skip_line = false;
+	if (argv[1])
 	{
-		f_printf("%s", str = argv[i]);
-		str = argv[++i];
-		if (str)
-			f_printf(" ");
+		if (argv[i][0] == '-')
+			skip_line = must_skip_newline(argv[i++]);
+		str = argv[i];
+		while (str)
+		{
+			f_printf("%s", str = argv[i]);
+			str = argv[++i];
+			if (str)
+				f_printf(" ");
+		}
 	}
 	if (!skip_line)
 		f_printf("\n");

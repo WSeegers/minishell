@@ -6,20 +6,19 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 15:04:36 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/03 09:45:10 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:21:20 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-static int		find_var_end(char *arg, int offset)
+static int	find_var_end(char *arg, int offset)
 {
 	char	c;
 
 	while ((c = arg[++offset]))
 		if (!(f_isalnum(c) || c == '-' || c == '_'))
-			break;
+			break ;
 	return (offset);
 }
 
@@ -64,7 +63,7 @@ static void	handle_var(char **arg, int offset)
 	*arg = front;
 }
 
-void	expand_var(t_argv argv)
+void		expand_var(t_argv argv)
 {
 	char		*arg;
 	int			i;

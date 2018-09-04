@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_env_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 06:29:07 by wseegers          #+#    #+#             */
-/*   Updated: 2018/08/24 22:59:26 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:28:45 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ char		*validate_env_path(t_argv argv)
 
 	if (!(path = get_env("PATH")))
 		return (NULL);
-	env_path = f_strsplit(path,':');
+	env_path = f_strsplit(path, ':');
 	i = -1;
 	ret = NULL;
 	while ((tmp_path = env_path[++i]))
 	{
 		if ((ret = try(tmp_path, argv[0])))
-			break;
+			break ;
 	}
 	f_strarrdel(env_path);
 	return (ret);

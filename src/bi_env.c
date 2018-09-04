@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bi_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/02 21:26:23 by wseegers          #+#    #+#             */
-/*   Updated: 2018/09/02 21:29:56 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/09/04 09:26:54 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-void	bi_env (t_argv argv)
+void	bi_env(t_argv argv)
 {
 	(void)argv;
 	print_env();
